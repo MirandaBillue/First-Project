@@ -1,13 +1,31 @@
-$.ajax({
-    url:'https://api.edamam.com/api/recipes/v2?type=public&q=fruity&app_id=113b4f65&app_key=210535346349c3454a01549b849ebdb0&dishType=Desserts&imageSize=REGULAR'
-  }).then(
-    (data1) => {
-     console.log(data1);
-    },
-    (error1) => {
-     console.log('bad request1', error1);
+const $sweetBtn = $('#button')
+const $mainContent = $('main')
+
+
+
+$sweetBtn.on('click', somethingSweet);
+
+
+function somethingSweet(event)
+ {
+    event.preventDefault();
+    $mainContent.empty()
+
+    $.ajax({
+      url:'https://api.edamam.com/api/recipes/v2?type=public&q=fruity&app_id=113b4f65&app_key=210535346349c3454a01549b849ebdb0&dishType=Desserts&imageSize=REGULAR'
+    }).then(
+      (data) => {
+       console.log(data);
+      },
+      (error) => {
+       console.log('bad request', error);
+      }
+    );
+
     }
-  );
+
+
+
 
 
 
@@ -22,3 +40,10 @@ $.ajax({
      console.log('bad request2', error2);
     }
   );
+
+ 
+
+
+
+
+
