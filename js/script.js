@@ -1,49 +1,48 @@
-const APIKEY = "apiKey=e4fd76405420474aaaa447bc8cd20c73";
-const $input = $('input[type="text"]');
+let recipeData, userInput;
+
+const APIKEY = "apiKey=3bba871e1a5c4b74b78c0452c15d076f"
+const $input = $('input[type="text"]')
+const $recipes = $("#sugar")
+
+const URL = "https://api.spoonacular.com/recipes/complexSearch?" + APIKEY + "&query="
+
+$('#button').on('click', somethingSweet)
 
 
-$('#button').on('click', somethingSweet);
-
-
-function somethingSweet(event) {
-  event.preventDefault();
-  $('#sugar').empty();
-  userInput = $('#input').val();
-  if (userInput === "") return;
-
-  $.ajax({
-    url: 'https://api.spoonacular.com/recipes/complexSearch?' + APIKEY + "&query=" + userInput
-  }).then(
-    (data1) => {
-      console.log(data1);
-    },
-    (error1) => {
-      console.log('bad request1', error1);
-    }
-  );
-
-}
-
-
-
-// function render() {
-
+// function pickRecipe() {
+//   const randomIndex = Math.floor(Math.random() * URL.length)
+//   const recipe = URL(randomIndex)
+//   somethingSweet(recipe)
 // }
 
-// $.ajax({
-//   url: 'https://api.edamam.com/api/recipes/v2?type=public&q=sweet&app_id=113b4f65&app_key=210535346349c3454a01549b849ebdb0&dishType=Desserts&imageSize=REGULAR&random=true&field=uri' + userInput
-// }).then(
-//   (data2) => {
-//     console.log(data2);
-//   },
-//   (error2) => {
-//     console.log('bad request2', error2);
-//   }
-// );
+function somethingSweet(recipe) {
+  recipe.preventDefault()
+  $('#sugar').empty()
+  userInput = $input.val()
+  if (userInput === "") return;
 
+  $.ajax(URL+userInput).then(
+    function(data) {
+      console.log(data)
+      let shownRecipes = ""
+      $.map(data, function (_value, _key){
+      return (`${shownRecipes}`)
+    },
+    $('main').append(`<div class="item">
+    <img src="${data.results[0].image}" alt="img"/>
+    <div class="flex-container">
+      <h1 class="title">"${data.results[0].title}"</h1>
+      <p class="id">"${data.results[0]}"<p>`),
+      $input.val(''),
+      )
+    },
+    function (error) {
+      console.log(error)
+    })
 
-
-
-
+}
+    // function render() {
+    //   $img.attr('src', data.image)
+    // }
 
 
