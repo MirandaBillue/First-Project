@@ -22,19 +22,24 @@ function somethingSweet(recipe) {
         $totalData = data.results
         $recipeDiv.text() === JSON.stringify($totalData)
         // console.log($totalData)
-       getRecipe() 
-      }    
-   else{
-    $recipeDiv.text === error
-   }  
+        getRecipe()
+      }
+      else {
+        $recipeDiv.text === error
+      }
     })
-  }
-function getRecipe(){
-  $recipeDiv.text = ""
-  for(let i = 0; i < $totalData.length; i++){
-      console.log($totalData)
- 
 }
+function getRecipe() {
+  $recipeDiv.text = ""
+  for (let i = 0; i < $totalData.length; i++) {
+    // console.log($totalData)
+    $('main').append(`<div class="item">
+      <img src="${$totalData[i].image}" alt="img"/>
+       <div class="flex-container">
+       <h2 class="title">"${$totalData[i].title}"</h2>`)
+    $('.item').text() === (`<h2><a href="javascript:void(0);"onclick="goToSourceURL${$totalData[i].id}"> + "${$totalData[i].title}" + '</a></h2>`)
+    $('.item').append($recipeDiv);
+  }
 }
 
 
