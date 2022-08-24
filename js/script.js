@@ -1,48 +1,40 @@
-let recipeData, userInput;
+let userInput;
 
-const APIKEY = "apiKey=3bba871e1a5c4b74b78c0452c15d076f"
+const APIKEY = "apiKey=82f590e502ff46aab98a0944c6686f4f"
 const $input = $('input[type="text"]')
-const $recipes = $("#sugar")
+const $recipeDiv = $("recipes-div");
+let $totalData = []
 
-const URL = "https://api.spoonacular.com/recipes/complexSearch?" + APIKEY + "&query="
-
+const URL = "https://api.spoonacular.com/recipes/complexSearch?"
+// console.log(URL)
 $('#button').on('click', somethingSweet)
-
-
-// function pickRecipe() {
-//   const randomIndex = Math.floor(Math.random() * URL.length)
-//   const recipe = URL(randomIndex)
-//   somethingSweet(recipe)
-// }
 
 function somethingSweet(recipe) {
   recipe.preventDefault()
-  $('#sugar').empty()
+  $('.item').empty()
   userInput = $input.val()
   if (userInput === "") return;
 
-  $.ajax(URL+userInput).then(
-    function(data) {
-      console.log(data)
-      let shownRecipes = ""
-      $.map(data, function (_value, _key){
-      return (`${shownRecipes}`)
-    },
-    $('main').append(`<div class="item">
-    <img src="${data.results[0].image}" alt="img"/>
-    <div class="flex-container">
-      <h1 class="title">"${data.results[0].title}"</h1>
-      <p class="id">"${data.results[0]}"<p>`),
-      $input.val(''),
-      )
-    },
-    function (error) {
-      console.log(error)
+  $.ajax(URL + APIKEY + "&query=" + userInput).then(
+    function (data) {
+      // console.log(data)
+      if (data.results.length > 0) {
+        $totalData = data.results
+        $recipeDiv.text() === JSON.stringify($totalData)
+        // console.log($totalData)
+       getRecipe() 
+      }    
+   else{
+    $recipeDiv.text === error
+   }  
     })
-
+  }
+function getRecipe(){
+  $recipeDiv.text = ""
+  for(let i = 0; i < $totalData.length; i++){
+      console.log($totalData)
+ 
 }
-    // function render() {
-    //   $img.attr('src', data.image)
-    // }
+}
 
 
