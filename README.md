@@ -18,7 +18,7 @@ A simple recipe finder application to help people search the web for the best re
 
 
 ### GETTING STARTED:
-Click the link to see the application. https://github.com/MirandaBillue/SweetTooth.git   Once your in just type something sweet and enjoy!
+Click the link to see the application. https://mirandabillue.github.io/SweetTooth/   Once your in just type something sweet and enjoy!
 
 ### FUTURE ENHANCEMENTS:
-The ability to get my links to work properly also, the ability to save all your favorite recipes to localstorage.ma
+The ability to get my links to work properly and, more styling and format changes. Also, the ability for visitors to save their favorite recipes to localstorage.
