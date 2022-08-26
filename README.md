@@ -1,23 +1,24 @@
-SugarTooth
+# SweetTooth
 
-A simple recipe finder application for people with a sweet tooth!
-
-
-Technologies Used
--HTML5
--CSS3
--JAVASCRIPT
--jQUERY
--GOOGLE FONTS
--SPOONACULAR API
-
-SCREENSHOTS
+A simple recipe finder application to help people search the web for the best recipes!
 
 
+### TECHNOLOGIES USED:
+- HTML5
+- CSS3
+- JAVASCRIPT
+- jQUERY
+- GOOGLE FONTS
+- SPOONACULAR API
 
+
+### SCREENSHOTS
 
 
 
 
+### GETTING STARTED:
+Click the link to see the application. https://github.com/MirandaBillue/SweetTooth.git
 
-FUTURE ENHANCEMENTS:
+### FUTURE ENHANCEMENTS:
+The ability to get my links to work properly also, the ability to save all your favorite recipes to localstorage.

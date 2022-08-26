@@ -1,6 +1,6 @@
 let userInput;
 
-const APIKEY = "apiKey=1ddd375e19d64d5e80d3fc036fdbcb6c"
+const APIKEY = "apiKey=569e0a4c32fd42ef9b2a465b3622713f"
 const $input = $('input[type="text"]')
 const $recipeDiv = $("#recipes-div");
 let $totalData = []
@@ -15,7 +15,7 @@ function somethingSweet(recipe) {
   recipe.preventDefault()
   $('#recipes-div').empty()
   userInput = $input.val()
-  // if (userInput === "") return;
+  if (userInput === "") return;
 
   $.ajax(URL + APIKEY + "&query=" + userInput).then(
     function (data) {
@@ -30,34 +30,42 @@ function somethingSweet(recipe) {
         $recipeDiv.text('error')
       }
     })
-  }
-
+}
+let j = 0
 function getRecipe() {
-     $.each($totalData, function( i , val) { 
-  //  for (let i = 0; i < $totalData.length; i++) {
+  $recipeDiv.text = ""
+  $.each($totalData, function (i) {
+    //  for (let i = 0; i < $totalData.length; i++) {
     // console.log($totalData)
     $('main').append(`<div class="item">
       <img src="${$totalData[i].image}" alt="img"/></div>
        <div class="flex-container">
        <h2 class="title">"${$totalData[i].title}"</h2>
-       <a href="" id="sourceURL">Get Recipe</a></div>`)
-       
-       $('a').click(sourceURL(`"${$totalData[i].id}"`)) 
-       
+       </div><div id="linkDiv${j}"></div>`)
+
+    $('#sourceLink').on('click', sourceURL(`${$totalData[i].id}`))
+
   })
 }
-  function sourceURL(id) {
-      let recipeURL = "https://api.spoonacular.com/recipes/" + id + "/information?apiKey=1ddd375e19d64d5e80d3fc036fdbcb6c"
-      $.ajax(recipeURL).then(
-        function (data) {
-          console.log(data)  
-          window.open(data.sourceUrl, "_blank") 
-          $('#sourceURL').text(data.recipeURL)
-          $('#sourceURL').attr("href", data.recipeURL)
-          }
-      )
+
+const links = []
+function sourceURL(id) {
+  let recipeURL = `https://api.spoonacular.com/recipes/${(id)}/information?apiKey=569e0a4c32fd42ef9b2a465b3622713f`
+  $.ajax(recipeURL).then(
+    function (data) {
+      // console.log(data) 
+  //  links.push(data)
+  //  console.log(links)
+   
+      // $("#sourceURL").text(data.sourceURL)
+      // $("#sourceURL").attr("href", data.sourceURL)
+      // window.open(data.sourceUrl, "name")
+      $(`#linkDiv${j}`).append(`<div><a target="_blank" href="${data.sourceUrl}" id="sourceLink">Get Recipe</a></div>`)
+      console.log(data.sourceUrl)
+      j++
     }
- 
-    
-    
-  
+  )
+} 
+
+
+
